@@ -1,6 +1,4 @@
 import { CheckCircle, MapPin, Phone, Mail } from "lucide-react";
-import officeImg from "@/assets/office.jpg";
-import signboardImg from "@/assets/signboard.jpg";
 
 const highlights = [
   "Creative & Data-Driven Approach",
@@ -14,22 +12,22 @@ const AboutSection = () => {
     <section id="about" className="py-24">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="relative">
+          <div className="relative animate-fade-up">
             <img
-              src={officeImg}
+              src="/images/office-team.jpg"
               alt="Ingenious Group Office"
-              className="rounded-2xl shadow-brand w-full object-cover h-[400px]"
+              className="rounded-2xl shadow-brand w-full object-cover h-[400px] hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
             <img
-              src={signboardImg}
-              alt="Ingenious Group Signboard"
-              className="absolute -bottom-8 -right-8 w-48 h-48 object-cover rounded-2xl shadow-brand border-4 border-background hidden md:block"
+              src="/images/branding-creative.jpg"
+              alt="Ingenious Group Creative"
+              className="absolute -bottom-8 -right-8 w-48 h-48 object-cover rounded-2xl shadow-brand border-4 border-background hidden md:block hover:scale-110 transition-transform duration-500"
               loading="lazy"
             />
           </div>
 
-          <div>
+          <div className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">About Us</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-foreground mt-2 mb-6">
               Your Growth Partner in <span className="text-gradient">Digital Marketing</span>

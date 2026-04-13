@@ -93,8 +93,8 @@ const ContactSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
-          <div className="lg:col-span-3">
-            <form onSubmit={handleSubmit} className="bg-card p-8 rounded-2xl shadow-card border border-border">
+          <div className="lg:col-span-3 animate-fade-up">
+            <form onSubmit={handleSubmit} className="bg-card p-8 rounded-2xl shadow-card border border-border hover-lift">
               <div className="grid sm:grid-cols-2 gap-5 mb-5">
                 <div>
                   <label className="text-sm font-medium text-foreground mb-1.5 block">Name *</label>
@@ -190,8 +190,8 @@ const ContactSection = () => {
             </form>
           </div>
 
-          <div className="lg:col-span-2 flex flex-col gap-6">
-            <div className="bg-gradient-brand text-primary-foreground p-8 rounded-2xl">
+          <div className="lg:col-span-2 flex flex-col gap-6 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+            <div className="bg-gradient-brand text-primary-foreground p-8 rounded-2xl hover-lift">
               <h3 className="font-heading text-xl font-semibold mb-6">Contact Information</h3>
               <div className="flex flex-col gap-5">
                 <div className="flex items-start gap-3">

@@ -1,11 +1,7 @@
-import mockupImg from "@/assets/mockup.jpg";
-import businessCardImg from "@/assets/business-card.jpg";
-import servicesBg from "@/assets/services-bg.jpg";
-
 const portfolioItems = [
-  { img: mockupImg, title: "Brand Identity Design", category: "Branding" },
-  { img: businessCardImg, title: "Business Card Design", category: "Print Design" },
-  { img: servicesBg, title: "Digital Campaign Dashboard", category: "Digital Marketing" },
+  { img: "/images/branding-creative.jpg", title: "Brand Identity Design", category: "Branding" },
+  { img: "/images/services-social-media.jpg", title: "Social Media Campaign", category: "Digital Marketing" },
+  { img: "/images/results-analytics.jpg", title: "Analytics Dashboard", category: "Performance Marketing" },
 ];
 
 const PortfolioSection = () => {
@@ -23,10 +19,11 @@ const PortfolioSection = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
-          {portfolioItems.map((item) => (
+          {portfolioItems.map((item, idx) => (
             <div
               key={item.title}
-              className="group relative overflow-hidden rounded-2xl shadow-card hover:shadow-brand transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl shadow-card hover:shadow-brand transition-all duration-300 animate-fade-up"
+              style={{ animationDelay: `${idx * 0.1}s` }}
             >
               <img
                 src={item.img}

@@ -1,11 +1,13 @@
 import { ArrowRight, Rocket } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20">
       <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" width={1920} height={1080} />
+        <img src="/images/hero-digital-marketing.jpg" alt="Hero Background" className="w-full h-full object-cover animate-image-zoom" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-hero opacity-85" />
       </div>
 
@@ -26,18 +28,18 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-8 py-4 rounded-lg font-heading font-semibold text-lg hover:opacity-90 transition-opacity"
+            <button
+              onClick={() => navigate("/contact")}
+              className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-8 py-4 rounded-lg font-heading font-semibold text-lg hover:scale-105 transition-transform"
             >
               Get Started <ArrowRight size={20} />
-            </a>
-            <a
-              href="#services"
+            </button>
+            <button
+              onClick={() => navigate("/services")}
               className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded-lg font-heading font-semibold text-lg hover:bg-primary-foreground/10 transition-colors"
             >
               Our Services
-            </a>
+            </button>
           </div>
 
           <div className="flex gap-8 mt-12 animate-fade-up" style={{ animationDelay: "0.4s" }}>
