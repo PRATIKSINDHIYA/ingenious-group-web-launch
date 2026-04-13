@@ -79,13 +79,13 @@ const About = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <AnimatedCard animation="fade-up" className="flex items-center">
+            <div className="animate-fade-up">
               <img
                 src="/images/office-team.jpg"
                 alt="Our Team"
                 className="w-full rounded-xl hover:scale-105 transition-transform duration-500"
               />
-            </AnimatedCard>
+            </div>
 
             <AnimatedCard animation="slide-left" delay={0.2}>
               <h2 className="font-heading text-4xl font-bold text-foreground mb-4">

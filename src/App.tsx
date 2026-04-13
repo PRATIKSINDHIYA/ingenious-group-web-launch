@@ -3,14 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import ScrollToTop from "@/components/ScrollToTop.tsx";
-import Index from "./pages/Index.tsx";
-import Services from "./pages/Services.tsx";
-import Portfolio from "./pages/Portfolio.tsx";
-import About from "./pages/About.tsx";
-import Contact from "./pages/Contact.tsx";
-import Blog from "./pages/Blog.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import ScrollToTop from "@/components/ScrollToTop";
+import Index from "./pages/Index";
+import Services from "./pages/Services";
+import Portfolio from "./pages/Portfolio";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
