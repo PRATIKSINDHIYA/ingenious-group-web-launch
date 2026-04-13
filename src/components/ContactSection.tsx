@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Send, MapPin, Phone, Mail, Instagram, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { saveContactSubmission } from "@/lib/firebase";
 
 interface FormData {
   name: string;
@@ -42,25 +44,36 @@ const ContactSection = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_KEY",
-          from_name: "Ingenious Group Website",
-          subject: `New Inquiry from ${formData.name}`,
-          ...formData,
-        }),
+      // Save to Firebase Firestore
+      await saveContactSubmission(formData);
+
+      // Send email via Brevo (through edge function)
+      const { error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
       });
 
-      if (response.ok) {
-        toast({ title: "Message sent successfully! 🎉", description: "We'll get back to you soon." });
-        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      if (error) {
+        console.error("Email error:", error);
+        // Still show success since data is saved in Firebase
+        toast({ 
+          title: "Message received! 🎉", 
+          description: "Your inquiry has been saved. We'll contact you soon." 
+        });
       } else {
-        throw new Error("Failed to send");
+        toast({ 
+          title: "Message sent successfully! 🎉", 
+          description: "We'll get back to you within 24 hours." 
+        });
       }
-    } catch {
-      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
+
+      setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    } catch (err) {
+      console.error("Submit error:", err);
+      toast({ 
+        title: "Something went wrong", 
+        description: "Please try again or contact us directly.", 
+        variant: "destructive" 
+      });
     } finally {
       setLoading(false);
     }
@@ -133,12 +146,12 @@ const ContactSection = () => {
                     className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-all"
                   >
                     <option value="">Select a service</option>
-                    <option value="social-media">Social Media Marketing</option>
-                    <option value="meta-ads">Meta Ads & PPC</option>
-                    <option value="branding">Branding & Identity</option>
-                    <option value="seo">SEO & Analytics</option>
-                    <option value="content">Content Creation</option>
-                    <option value="website">Website Development</option>
+                    <option value="Social Media Marketing">Social Media Marketing</option>
+                    <option value="Meta Ads & PPC">Meta Ads & PPC</option>
+                    <option value="Branding & Identity">Branding & Identity</option>
+                    <option value="SEO & Analytics">SEO & Analytics</option>
+                    <option value="Content Creation">Content Creation</option>
+                    <option value="Website Development">Website Development</option>
                   </select>
                 </div>
               </div>
