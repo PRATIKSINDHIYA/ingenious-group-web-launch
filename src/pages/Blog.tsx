@@ -1,9 +1,11 @@
 import { Calendar, User, ArrowRight } from "lucide-react";
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedCard from "@/components/AnimatedCard";
 
 const Blog = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const articles = [
     {
       id: 1,
@@ -150,9 +152,9 @@ const Blog = () => {
                   </div>
                   <span>{articles[0].readTime}</span>
                 </div>
-                <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
+                <button className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all">
                   Read Article <ArrowRight size={20} />
-                </a>
+                </button>
               </div>
             </div>
           </AnimatedCard>
@@ -197,9 +199,9 @@ const Blog = () => {
                       <Calendar size={14} /> {article.date}
                     </span>
                   </div>
-                  <a href="#" className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all">
+                  <button className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all">
                     Read More <ArrowRight size={16} />
-                  </a>
+                  </button>
                 </div>
               </AnimatedCard>
             ))}
@@ -277,9 +279,9 @@ const Blog = () => {
                 <p className="text-muted-foreground text-sm mb-4">
                   {resource.description}
                 </p>
-                <a href="#" className="inline-block text-primary font-semibold text-sm hover:underline">
+                <button className="inline-block text-primary font-semibold text-sm hover:underline">
                   Explore →
-                </a>
+                </button>
               </AnimatedCard>
             ))}
           </div>

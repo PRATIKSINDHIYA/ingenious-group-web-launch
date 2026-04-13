@@ -1,4 +1,5 @@
 import { Zap, Share2, Palette, TrendingUp, Users, Megaphone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ServiceCard from "@/components/ServiceCard";
@@ -6,6 +7,8 @@ import AnimatedCard from "@/components/AnimatedCard";
 import ImageGallery from "@/components/ImageGallery";
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   const services = [
     {
       icon: Share2,
@@ -122,12 +125,12 @@ const Services = () => {
             <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
               Let&apos;s discuss which services are right for your unique business needs.
             </p>
-            <a
-              href="/contact"
+            <button
+              onClick={() => navigate("/contact")}
               className="inline-block bg-primary-foreground text-primary px-8 py-4 rounded-lg font-heading font-semibold hover:scale-105 transition-transform"
             >
               Schedule a Consultation
-            </a>
+            </button>
           </AnimatedCard>
         </div>
       </section>

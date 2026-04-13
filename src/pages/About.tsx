@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { Award, Lightbulb, Users, Target } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedCard from "@/components/AnimatedCard";
 
 const About = () => {
+  const navigate = useNavigate();
   const values = [
     {
       icon: Lightbulb,
@@ -250,12 +252,12 @@ const About = () => {
             <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
               Join the 50+ businesses that have transformed their digital presence with Ingenious Group.
             </p>
-            <a
-              href="/contact"
+            <button
+              onClick={() => navigate("/contact")}
               className="inline-block bg-primary-foreground text-primary px-8 py-4 rounded-lg font-heading font-semibold hover:scale-105 transition-transform"
             >
               Start a Conversation
-            </a>
+            </button>
           </AnimatedCard>
         </div>
       </section>

@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AnimatedCard from "@/components/AnimatedCard";
 import ImageGallery from "@/components/ImageGallery";
 
 const Portfolio = () => {
+  const navigate = useNavigate();
   const portfolioItems = [
     {
       id: "1",
@@ -181,12 +183,12 @@ const Portfolio = () => {
             <p className="text-primary-foreground/90 text-lg mb-8 max-w-2xl mx-auto">
               Let&apos;s create something amazing together. Get in touch with our team today.
             </p>
-            <a
-              href="/contact"
+            <button
+              onClick={() => navigate("/contact")}
               className="inline-block bg-primary-foreground text-primary px-8 py-4 rounded-lg font-heading font-semibold hover:scale-105 transition-transform"
             >
               Start Your Project
-            </a>
+            </button>
           </AnimatedCard>
         </div>
       </section>
